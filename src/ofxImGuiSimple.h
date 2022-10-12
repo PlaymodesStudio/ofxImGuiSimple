@@ -8,10 +8,6 @@
 #ifndef ofxImGuiSimple_h
 #define ofxImGuiSimple_h
 
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
-#include "imgui_impl_opengl2.h"
 #include <stdio.h>
 
 class ofAppBaseWindow;

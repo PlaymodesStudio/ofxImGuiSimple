@@ -716,9 +716,11 @@ static int stb_textedit_paste_internal(STB_TEXTEDIT_STRING *str, STB_TexteditSta
       state->has_preferred_x = 0;
       return 1;
    }
-   // remove the undo since we didn't actually insert the characters
-   if (state->undostate.undo_point)
-      --state->undostate.undo_point;
+   // [DEAR IMGUI]
+   //// remove the undo since we didn't actually insert the characters
+   //if (state->undostate.undo_point)
+   //   --state->undostate.undo_point;
+   // note: paste failure will leave deleted selection, may be restored with an undo (see https://github.com/nothings/stb/issues/734 for details)
    return 0;
 }
 
@@ -764,7 +766,7 @@ retry:
          state->insert_mode = !state->insert_mode;
          break;
 #endif
-         
+
       case STB_TEXTEDIT_K_UNDO:
          stb_text_undo(str, state);
          state->has_preferred_x = 0;
@@ -922,7 +924,7 @@ retry:
          }
          break;
       }
-         
+
       case STB_TEXTEDIT_K_UP:
       case STB_TEXTEDIT_K_UP | STB_TEXTEDIT_K_SHIFT:
       case STB_TEXTEDIT_K_PGUP:
@@ -1014,7 +1016,7 @@ retry:
          }
          state->has_preferred_x = 0;
          break;
-         
+
 #ifdef STB_TEXTEDIT_K_TEXTSTART2
       case STB_TEXTEDIT_K_TEXTSTART2:
 #endif
@@ -1031,7 +1033,7 @@ retry:
          state->select_start = state->select_end = 0;
          state->has_preferred_x = 0;
          break;
-        
+
 #ifdef STB_TEXTEDIT_K_TEXTSTART2
       case STB_TEXTEDIT_K_TEXTSTART2 | STB_TEXTEDIT_K_SHIFT:
 #endif
