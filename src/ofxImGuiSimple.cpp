@@ -27,6 +27,7 @@ void ofxImGuiSimple::setup(ofAppBaseWindow* win){
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
     //io.ConfigViewportsNoAutoMerge = true;
     //io.ConfigViewportsNoTaskBarIcon = true;
+    io.ConfigViewportsNoDecoration = false;
     
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
